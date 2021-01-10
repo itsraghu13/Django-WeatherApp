@@ -1,0 +1,50 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+<nav class="navbar navbar-light bg-light ">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1 mx-auto title-nav">Weather Forecast</span>
+  </div>
+</nav>
+</div>
+
+<div class="container">
+
+<div class=" mt-4 text-area-container">
+    <form class="d-flex text-area mx-auto" method="POST">
+    {% csrf_token %}
+      <input class="form-control me-2 mr-1" name="city_name" type="search" placeholder="Search" aria-label="Search">
+      
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
+  {% if weather_data.city %}
+  <div>
+    <div class="card mx-auto mt-5" style="width: 18rem;">
+  <img src="http://openweathermap.org/img/w/{{weather_data.icon}}.png" class="card-img-top" alt="...">
+  
+  <hr>
+  <div class="card-body">
+    <h5 class="card-title">{{weather_data.city}}</h5>
+    <p class="card-text">{{weather_data.description}}</p>
+    <h5 class="card-title">{{weather_data.temperature}}°C</h5>
+
+    
+  </div>
+</div>
+{% endif %}
+  
+  </div>
+
+
+
+
+
+
+</div>
+
+
+
+{% endblock content %}
